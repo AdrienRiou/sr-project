@@ -53,6 +53,9 @@ io.on('connection', function (socket) {
         users.splice(i,1);
       }
     }
+
+    console.log(users)
+
     let userDisconnectMessage = {
       text: socket.name + ' leaves the game '
     };
@@ -60,6 +63,7 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('user-message', userDisconnectMessage);
 
     if( isPlaying ) {
+      console.log('eh')
       io.emit('updateGame', removePlayer(socket.color));
       io.emit('updateScore', users);
     }
@@ -200,6 +204,7 @@ function finishGame() {
   setTimeout(() => {
     numberOfFood = 15;
     gridGame = initGame();
+    isPlaying = true;
   
     for (i=0; i<users.length; i++) {
       users[i].score = 0;
@@ -210,8 +215,8 @@ function finishGame() {
   
 }
 
-http.listen(3000, function () {
-  console.log('listening on *:3000');
+http.listen(80, function () {
+  console.log('listening on *:80');
   gridGame = initGame();
   isPlaying = true;
 });
