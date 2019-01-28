@@ -1,0 +1,24 @@
+#gameCanvas {
+    border: 1px solid black;
+    margin-left: 50px;
+    float: left;
+}
+
+#Game {
+    padding-top: 20px;
+    display: none;
+}
+
+#messages {
+    color: white;
+}
+
+#scores {
+    padding-left: 50px;
+    float: left;
+    font-size: 30px;
+}
+
+#logs {
+    float:right;
+}
